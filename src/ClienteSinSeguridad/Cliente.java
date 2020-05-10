@@ -19,7 +19,7 @@ public class Cliente {
 
 	public static final int PUERTO = 3400;
 	
-	public static final String SERVIDOR = "localhost";
+	public static final String SERVIDOR = "157.253.201.190";
 
 	public static final String HOLA = "HOLA";
 	public static final String ALGORITMOS = "ALGORITMOS";
