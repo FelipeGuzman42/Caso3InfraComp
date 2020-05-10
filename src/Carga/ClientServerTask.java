@@ -1,4 +1,4 @@
-package Carga;
+package carga;
 
 import uniandes.gload.core.Task;
 import uniandes.gload.examples.clientserver.Client;

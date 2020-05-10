@@ -1,4 +1,4 @@
-package clienteSinSeguridad;
+package clienteSeguridad;
 
 import java.io.BufferedReader;
 import java.io.IOException;
