@@ -56,6 +56,7 @@ public class C {
 		System.out.println("Cuantos threads quiere en el pool del servidor?");
 		int nThreads = Integer.parseInt(br.readLine());
 		final ExecutorService poolThreads = Executors.newFixedThreadPool(nThreads);
+		System.out.println(nThreads+" threads creados. Esperando conexión...");
 		
 		for (int i=0;true;i++) {
 			try { 

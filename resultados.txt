@@ -1,0 +1,15 @@
+delegado 0: recibio-HOLA-continuando.
+delegado 0: recibio-ALGORITMOS:Blowfish:RSA:HMACSHA256-continuando.
+delegado 0: envio-OK-continuando.
+delegado 0: recibio-certificado del cliente. continuando.
+delegado 0: envio-OK-continuando.
+delegado 0: envio- certificado del servidor. continuando.
+delegado 0: recibio-OK-continuando.
+delegado 0: envio-llave K_SC al cliente. continuado.
+delegado 0: envio-7010-reto al cliente. continuando 
+delegado 0: recibio-7010-reto correcto. continuado.
+delegado 0: recibio-NTY0Ng==-continuando
+delegado 0: envio-1545-cifrado con K_SC. continuado.
+delegado 0: recibio-OK-Terminando exitosamente.
+delegado 0: Me demore 1029 ms.
+delegado 0: Se uso 73.2 de CPU en promedio.

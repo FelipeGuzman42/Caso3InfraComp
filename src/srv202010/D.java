@@ -37,7 +37,7 @@ public class D extends Thread {
 	private static X509Certificate certSer;
 	private static KeyPair keyPairServidor;
 	private static File file;
-	public static final int numCadenas = 13;
+	public static final int numCadenas = 15;
 
 	
 	public static void init(X509Certificate pCertSer, KeyPair pKeyPairServidor, File pFile) {
@@ -142,7 +142,7 @@ public class D extends Thread {
 				System.out.println(cadenas[2]);
 				
 				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
-				long tiempoIn = System.nanoTime();
+				long tiempoIn = System.currentTimeMillis();
 				/***** Fase 3: Recibe certificado del cliente *****/				
 				String strCertificadoCliente = dc.readLine();
 				byte[] certificadoClienteBytes = new byte[520];
@@ -247,10 +247,12 @@ public class D extends Thread {
 			        System.out.println(cadenas[12]);
 				}
 		        sc.close();
-		        long tiempoFin = System.nanoTime();
+		        long tiempoFin = System.currentTimeMillis();
 		        long tiempoTran = tiempoFin - tiempoIn;
-		        cadenas[13] = "Me demore "+tiempoTran+" ns.";
-		        cadenas[14] = "Se uso "+usoCPU+" de CPU en promedio.";
+		        cadenas[13] = dlg+"Me demore "+tiempoTran+" ms.";
+		        System.out.println(cadenas[13]);
+		        cadenas[14] = dlg+"Se uso "+usoCPU+" de CPU en promedio.";
+		        System.out.println(cadenas[14]);
 			    for (int i=0;i<numCadenas;i++) {
 				    escribirMensaje(cadenas[i]);
 			    }
