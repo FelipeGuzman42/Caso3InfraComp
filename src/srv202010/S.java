@@ -1,6 +1,7 @@
 package srv202010;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.management.ManagementFactory;
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -20,6 +21,10 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -146,6 +151,22 @@ public class S {
 	          x509v3CertificateBuilder.build(contentSigner);
 	  return new JcaX509CertificateConverter().setProvider("BC")
 	          .getCertificate(x509CertificateHolder);
+	}
+	
+	public static double getSystemCpuLoad() throws Exception {
+		MBeanServer mbs    = ManagementFactory.getPlatformMBeanServer();
+		ObjectName name    = ObjectName.getInstance("java.lang:type=OperatingSystem");
+		AttributeList list = mbs.getAttributes(name, new String[]{ "SystemCpuLoad" });
+		
+		if (list.isEmpty())     return Double.NaN;
+		
+		Attribute att = (Attribute)list.get(0);
+		Double value  = (Double)att.getValue();
+		
+		// usually takes a couple of seconds before we get real values
+		if (value == -1.0)      return Double.NaN;
+		// returns a percentage value with 1 decimal point precision
+		return ((int)(value * 1000) / 10.0);
 	}
 
 }

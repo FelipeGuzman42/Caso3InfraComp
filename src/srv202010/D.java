@@ -108,6 +108,7 @@ public class D extends Thread {
 					cadenas[0] = dlg + REC + linea + "-continuando.";
 					System.out.println(cadenas[0]);
 				}
+				double usoCPU = S.getSystemCpuLoad();
 				
 				/***** Fase 2:  *****/
 				linea = dc.readLine();
@@ -139,8 +140,9 @@ public class D extends Thread {
 				ac.println(OK);
 				cadenas[2] = dlg + ENVIO + OK + "-continuando.";
 				System.out.println(cadenas[2]);
-
 				
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
+				long tiempoIn = System.nanoTime();
 				/***** Fase 3: Recibe certificado del cliente *****/				
 				String strCertificadoCliente = dc.readLine();
 				byte[] certificadoClienteBytes = new byte[520];
@@ -153,6 +155,7 @@ public class D extends Thread {
 				ac.println(OK);
 				cadenas[4] = dlg + ENVIO + OK + "-continuando.";
 				System.out.println(cadenas[4]);
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
 				
 				/***** Fase 4: Envia certificado del servidor *****/
 				String strSerCert = toHexString(mybyte);
@@ -167,6 +170,7 @@ public class D extends Thread {
 					cadenas[6] = dlg + REC + linea + "-continuando.";
 					System.out.println(cadenas[6]);
 				}
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
 
 				/***** Fase 5: Envia llave simetrica *****/
 				SecretKey simetrica = S.kgg(algoritmos[1]);
@@ -175,6 +179,7 @@ public class D extends Thread {
 				ac.println(toHexString(ciphertext1));
 				cadenas[7] = dlg +  ENVIO + "llave K_SC al cliente. continuado.";
 				System.out.println(cadenas[7]);
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
 				
 				/***** Fase 5: Envia reto *****/
 				Random rand = new Random(); 
@@ -188,6 +193,7 @@ public class D extends Thread {
 				ac.println(toHexString(cipherreto));
 				cadenas[8] = dlg + ENVIO + reto + "-reto al cliente. continuando ";
 				System.out.println(cadenas[8]);
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
 
 				/***** Fase 6: Recibe reto del cliente *****/
 				linea = dc.readLine();
@@ -204,6 +210,7 @@ public class D extends Thread {
 				    sc.close();
 					throw new Exception(dlg + REC + strdelcliente + "-ERROR en reto. terminando");
 				}
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
 								
 				/***** Fase 7: Recibe identificador de usuario *****/
 				linea = dc.readLine();
@@ -212,6 +219,7 @@ public class D extends Thread {
 				String nombre = toHexString(ciphertext2);
 				cadenas[10] = dlg + REC + nombre + "-continuando";
 				System.out.println(cadenas[10]);
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
 				
 				/***** Fase 8: Envia hora de registro *****/
 				Calendar rightNow = Calendar.getInstance();
@@ -228,6 +236,7 @@ public class D extends Thread {
 				ac.println(toHexString(ciphertext3));
 				cadenas[11] = dlg + ENVIO + strvalor + "-cifrado con K_SC. continuado.";
 				System.out.println(cadenas[11]);
+				usoCPU = (usoCPU + S.getSystemCpuLoad())/2;
 		        
 				linea = dc.readLine();	
 				if (linea.equals(OK)) {
@@ -238,7 +247,10 @@ public class D extends Thread {
 			        System.out.println(cadenas[12]);
 				}
 		        sc.close();
-		        
+		        long tiempoFin = System.nanoTime();
+		        long tiempoTran = tiempoFin - tiempoIn;
+		        cadenas[13] = "Me demore "+tiempoTran+" ns.";
+		        cadenas[14] = "Se uso "+usoCPU+" de CPU en promedio.";
 			    for (int i=0;i<numCadenas;i++) {
 				    escribirMensaje(cadenas[i]);
 			    }
