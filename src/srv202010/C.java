@@ -10,7 +10,9 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
-
+//Libreria para el pool de threads
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class C {
 	private static ServerSocket ss;	
@@ -51,12 +53,15 @@ public class C {
 		ss = new ServerSocket(ip);
 		System.out.println(MAESTRO + "Socket creado.");
         
+		System.out.println("Cuantos threads quiere en el pool del servidor?");
+		int nThreads = Integer.parseInt(br.readLine());
+		final ExecutorService poolThreads = Executors.newFixedThreadPool(nThreads);
+		
 		for (int i=0;true;i++) {
 			try { 
 				Socket sc = ss.accept();
 				System.out.println(MAESTRO + "Cliente " + i + " aceptado.");
-				D d = new D(sc,i);
-				d.start();
+				poolThreads.execute(new D(sc,i));
 			} catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");
 				e.printStackTrace();
