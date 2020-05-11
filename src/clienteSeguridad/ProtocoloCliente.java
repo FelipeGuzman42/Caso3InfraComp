@@ -62,7 +62,7 @@ public class ProtocoloCliente {
 
 		//Lee del teclado
 		System.out.println("Escriba el mensaje para enviar(HOLA para iniciar protocolo): ");
-		String fromUser = stdIn.readLine();
+		String fromUser = "HOLA";
 
 		//Envía por la red
 		pOut.println(fromUser);
@@ -77,9 +77,9 @@ public class ProtocoloCliente {
 
 		// El usuario ingresa los datos para el servidor
 		System.out.println("Ingrese identificacion:");
-		identificacion = stdIn.readLine();
+		identificacion = Integer.toString((int) (Math.random() * 100) + 1);
 		System.out.println("Ingrese localizacion:");
-		localizacion = stdIn.readLine();
+		localizacion = Integer.toString((int) (Math.random() * 100) + 1);
 
 		/* Inicia Etapa 1
 		 * El usuario selecciona los algoritmos para cifrar entre él y el servidor
@@ -90,7 +90,7 @@ public class ProtocoloCliente {
 		String respuestaFinal = "ALGORITMOS:";
 
 
-		int algSim = Integer.parseInt(stdIn.readLine());
+		int algSim = aleatorio();
 		if(algSim == 1)
 		{
 			respuestaFinal = respuestaFinal+ AES+":"+RSA+":";
@@ -106,7 +106,7 @@ public class ProtocoloCliente {
 
 		System.out.println("Seleccione que algoritmo dese usar \n Para Cifrado HMAC \n 1) HmacSHA1 \n 2) HmacSHA256 \n 3) HmacSHA384 \n 4) HmacSHA512");
 
-		int algHmac = Integer.parseInt(stdIn.readLine());
+		int algHmac = (int) (Math.random() * 4) + 1;
 		if(algHmac == 1)
 		{
 			respuestaFinal = respuestaFinal+ HMACSHA1;
@@ -320,5 +320,17 @@ public class ProtocoloCliente {
 		return crt;
 	}
 
-
+		
+	public static int aleatorio()
+	{
+		int numero = (int) (Math.random() * 10) + 1;
+		if(numero%2==0)
+		{
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	
+	
 }
