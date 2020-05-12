@@ -53,7 +53,7 @@ public class ProtocoloCliente {
 	public static void procesar(String inicio, BufferedReader pIn, PrintWriter pOut) throws IOException, NoSuchAlgorithmException, OperatorCreationException, CertificateException, ClassNotFoundException {
 
 		//Lee del teclado
-		System.out.println("Escriba el mensaje para enviar(HOLA para iniciar protocolo): ");
+		System.out.println("HOLA");
 		String fromUser = inicio;
 
 		//Envía por la red
@@ -68,16 +68,16 @@ public class ProtocoloCliente {
 		}	
 
 		// El usuario ingresa los datos para el servidor
-		System.out.println("Ingrese identificacion:");
+		//System.out.println("Ingrese identificacion:");
 		identificacion = Integer.toString((int) (Math.random() * 100) + 1);
-		System.out.println("Ingrese localizacion:");
+		//System.out.println("Ingrese localizacion:");
 		localizacion = Integer.toString((int) (Math.random() * 100) + 1);
 
 		/* Inicia Etapa 1
 		 * El usuario selecciona los algoritmos para cifrar entre él y el servidor
 		 * Cifrado simétrico, asimétrico y HMAC
 		 */
-		System.out.println("Seleccione que algoritmo dese usar \n Para Cifrado Simetrico \n 1) AES \n 2) BlOWFISH");
+		//System.out.println("Seleccione que algoritmo dese usar \n Para Cifrado Simetrico \n 1) AES \n 2) BlOWFISH");
 
 		String respuestaFinal = "ALGORITMOS:";
 
@@ -96,7 +96,7 @@ public class ProtocoloCliente {
 
 		}
 
-		System.out.println("Seleccione que algoritmo dese usar \n Para Cifrado HMAC \n 1) HmacSHA1 \n 2) HmacSHA256 \n 3) HmacSHA384 \n 4) HmacSHA512");
+		//System.out.println("Seleccione que algoritmo dese usar \n Para Cifrado HMAC \n 1) HmacSHA1 \n 2) HmacSHA256 \n 3) HmacSHA384 \n 4) HmacSHA512");
 
 		int algHmac = (int) (Math.random() * 4) + 1;
 		if(algHmac == 1)
