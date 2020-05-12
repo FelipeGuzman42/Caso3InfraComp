@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-/srv202010/
-/Carga/
-=======
-/clienteSinSeguridad/
-/clienteSeguridad/
->>>>>>> 91ecbb30b3b572e6cb9ab6227408f346ef5ec763
-/carga/
-/cargaSinSeguridad/
 /cargaConSeguridad/
+<<<<<<< HEAD
 /servidorSinSeguridad/
+=======
+/cargaSinSeguridad/
+/clienteSeguridad/
+/clienteSinSeguridad/
+/servidorSinSeguridad/
+/srv202010/
+>>>>>>> f4364a3d4789f790747b62208901f3571414b646
