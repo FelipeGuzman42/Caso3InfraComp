@@ -47,12 +47,12 @@ public class ProtocoloCliente {
 	private static String algoritmoSimetrico = "";
 	private static String algoritmoAsimetrico = "";
 
-	public static void procesar(BufferedReader stdIn, BufferedReader pIn, PrintWriter pOut) throws IOException,
+	public static void procesar(String inicio, BufferedReader pIn, PrintWriter pOut) throws IOException,
 			NoSuchAlgorithmException, OperatorCreationException, CertificateException, ClassNotFoundException {
 
 		// Lee del teclado
 		System.out.println("Escriba el mensaje para enviar(HOLA para iniciar protocolo): ");
-		String fromUser = "HOLA";
+		String fromUser = inicio;
 
 		// Envía por la red
 		pOut.println(fromUser);

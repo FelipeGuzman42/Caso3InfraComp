@@ -45,7 +45,7 @@ public class Cliente {
 	/**
 	 * Estado del jugador.
 	 */
-	private String estado;
+	private static String estado;
 
 	private boolean finEncuentro;
 
@@ -78,13 +78,13 @@ public class Cliente {
 			System.exit(-1);
 		}
 
-		BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in)); 
+		//BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in)); 
 
-		ProtocoloCliente.procesar(stdIn,lector,escritor);
+		ProtocoloCliente.procesar(estado,lector,escritor);
 
 		
 		
-		stdIn.close();
+		//stdIn.close();
 		escritor.close();
 		lector.close();
 		socket.close();
