@@ -17,7 +17,7 @@ public class Cliente {
 	// Constantes
 	// -----------------------------------------------------------------
 
-	public static final int PUERTO = 3400;
+	public static final int PUERTO = 8080;
 	
 	public static final String SERVIDOR = "localhost";
 
