@@ -2,17 +2,21 @@ package clienteSinSeguridad;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 import javax.xml.bind.DatatypeConverter;
@@ -61,11 +65,13 @@ public class ProtocoloCliente {
 		}
 
 		// El usuario ingresa los datos para el servidor
-		System.out.println("Ingrese identificacion:");
+		
 		identificacion = Integer.toString((int) (Math.random() * 100) + 1);
-		System.out.println("Ingrese localizacion:");
+		
 		localizacion =Integer.toString((int) (Math.random() * 100) + 1);
 
+		System.out.println("Ingrese identificacion: " + identificacion);
+		System.out.println("Ingrese localizacion: " + localizacion);
 		/*
 		 * Inicia Etapa 1 El usuario selecciona los algoritmos para cifrar entre él y el
 		 * servidor Cifrado simétrico, asimétrico y HMAC
