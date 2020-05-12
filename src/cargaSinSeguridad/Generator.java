@@ -1,4 +1,4 @@
-package carga;
+package cargaSinSeguridad;
 
 import uniandes.gload.core.LoadGenerator;
 import uniandes.gload.core.Task;
@@ -14,7 +14,7 @@ public class Generator {
 	 */
 	public Generator() {
 		Task work = createTask();
-		int numberOfTasks = 100;
+		int numberOfTasks = 50;
 		int gapBetweenTasks = 1000;
 		generator = new LoadGenerator("Client - Server Load Test", numberOfTasks, work, gapBetweenTasks);
 		generator.generate();

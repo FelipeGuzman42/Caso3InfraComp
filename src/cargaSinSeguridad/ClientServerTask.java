@@ -1,11 +1,9 @@
-package carga;
+package cargaSinSeguridad;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
-
 import org.bouncycastle.operator.OperatorCreationException;
-
 import clienteSinSeguridad.Cliente;
 import uniandes.gload.core.Task;
 
@@ -14,14 +12,12 @@ public class ClientServerTask extends Task{
 	@Override
 	public void execute() {
 
-			try {
-				Cliente.correr();
-
-			} catch (NoSuchAlgorithmException | OperatorCreationException | CertificateException
-					| ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			Cliente.correr();
+		} catch (NoSuchAlgorithmException | OperatorCreationException | CertificateException | ClassNotFoundException
+				| IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
